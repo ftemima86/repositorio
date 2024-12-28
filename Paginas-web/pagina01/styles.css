@@ -256,7 +256,9 @@ h1 {
     max-width: 1300px;
     margin: auto;
     width: 100%;
+    gap: 12px;
     padding: 12px;
+    min-height: 90vh;
 }
 
 .portfolio__project {
