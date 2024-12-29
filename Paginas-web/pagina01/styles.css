@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -22,6 +23,10 @@ div, ul, nav, header, footer, a, li, label, body {
     align-items: center;
     container-type: inline-size;
     container-name: header;
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    font-size: 20px;
 }
 
 .header__open-nav-button {
@@ -248,6 +253,14 @@ h1 {
     display: flex;
     flex-direction: column;
     text-align: center;
+    container-name: portfolio;
+    container-type: inline-size;
+    justify-content: space-evenly;
+}
+
+.portfolio__title {
+    font-size: 3rem;
+    margin-bottom: 0;
 }
 
 .portfolio__project-container {
@@ -258,15 +271,155 @@ h1 {
     width: 100%;
     gap: 12px;
     padding: 12px;
-    min-height: 90vh;
+    min-height: 80vh;
 }
 
 .portfolio__project {
-    background-image: url("dalto.png");
+    background-image: linear-gradient(#0009, #0009), url("dalto.jpg");
+    background-position: center;
+    background-size: cover;
+    display: grid;
+    place-content: center;
+    border-radius: 12px;
+}
+
+.portfolio__project:hover {
+    opacity: 0.74;
+    outline: 2px solid #fff6;
 }
 
 
 /* ------------- PORTAFOLIO QUERIES ----------- */
 
+@container portfolio (min-width: 56.25rem) {
+    .portfolio__project-container {
+        grid-template-columns: repeat(auto-fill,minmax(400px,1fr));
+    }
+
+    .portfolio__project:first-child {
+        grid-column: span 2;
+    }
+
+    .portfolio__project:nth-child(6) {
+        grid-column: span 2 ;
+    }
+
+}
+
+@container portfolio (min-width: 81.25rem) {
+    .portfolio__project-container {
+        grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    }
+
+    .portfolio__project:first-child {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .portfolio__project:nth-child(6) {
+        grid-column: span 4 ;
+    }
+
+}
+
 
 /* ---------- PORTAFOLIO ENDS -----------*/
+
+
+/* ----------- CONTACT SECTION ------------ */
+
+.form {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 40px 0;
+    container-name: form;
+    container-type: inline-size;
+}
+
+.form__form {
+    padding: 12px;
+    max-width: 600px;
+    width: 100%;
+    display: grid;
+    margin-bottom: 30px;
+}
+
+.form__input-container :is(input,textarea) {
+    width: 100%;
+    padding: 9px;
+    font-size: 16px;
+    margin: 4px;
+    border: none;
+    box-shadow: 2px 2px 4px #003;
+    background-color: #fffd;
+}
+
+.form__input-container textarea {
+    resize: none;
+    min-height: 120px;
+    font-family: inherit;
+}
+
+.form__input-container input[type="submit"] {
+    padding: 12px;
+    background-color: #48e;
+    color: #fff;
+}
+
+.form h2 {
+    font-size: 2.6rem;
+}
+
+/* ----------- CONTACT QUERIES ------------ */
+
+@container form (min-width: 56.25rem) {
+    .form__form {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+        "name lastname"
+        "email email"
+        "message message"
+        "button button";
+        gap: 12px;
+        background-image: radial-gradient(#1231, #1233);
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 0 40px #0006;
+    }
+
+    .form__input-container:first-child {
+        grid-area: name;
+    }
+    .form__input-container:nth-child(2) {
+        grid-area:lastname ;
+    }
+    .form__input-container:nth-child(3) {
+        grid-area:email ;
+    }
+    .form__input-container:nth-child(4) {
+        grid-area: message;
+    }
+    .form__input-container:nth-child(5) {
+        grid-area: button;
+    }
+
+    .form__input-container :is(input,textarea) {
+        box-shadow: none;
+        border-radius: 4px;
+    }
+}
+
+/* ----------- CONTACT ENDS ------------ */
+
+/* ----------- FOOTER SECTION ------------ */
+
+footer {
+    padding: 60px;
+    text-align: center;
+    background-color: #123;
+    color: #fffd;
+    font-size: 22px;
+}
