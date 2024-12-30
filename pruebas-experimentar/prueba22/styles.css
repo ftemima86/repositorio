@@ -2,19 +2,30 @@ body {
     margin: 0;
     font-family: Montsserat;
     background-color: #ccc;
+    height: 200vh;
 }
 
 div {
     box-sizing: border-box;
 }
 
+.crecedor {
+    height: 200vh;
+}
+
+.container {
+    scroll-timeline: --containerScroll;
+    overflow-y: scroll;
+    height: 100vh;
+}
+
 .box {
-    margin: 20px;
     background-color: #fff;
     border: 4px solid #48e;
     padding: 6px;
     border-radius: 39px;
-    transition: border .6s steps(120);
+    position: fixed;
+    width: 100%;
 }
 
 .barra {
@@ -23,13 +34,9 @@ div {
     border-radius: 30px;
     width: 10%;
     animation-name: llenar-barra;
-    animation-duration: 1s;
-    animation-delay: 1s;
     animation-fill-mode: both;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-play-state: paused;
+    animation-timeline: --containerScroll;
 }
 
 .barra:active {
